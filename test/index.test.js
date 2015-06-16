@@ -104,6 +104,17 @@ describe('Elevio', function() {
         analytics.assert(window._elev.user.plan instanceof Array);
         analytics.assert(window._elev.user.plan[0] === 'gold');
       });
+
+      it('should send their traits', function() {
+        analytics.identify('id', { locale: 'en_US' });
+        analytics.assert(window._elev.user.traits instanceof Object);
+        analytics.assert(window._elev.user.traits.locale === 'en_US');
+      });
+
+      it('should not send traits', function() {
+        analytics.identify('id', { firstName: 'Test', lastName: 'Person', email: 'test@email.com' });
+        analytics.assert(!(window._elev.user.traits instanceof Object));
+      });
     });
   });
 });

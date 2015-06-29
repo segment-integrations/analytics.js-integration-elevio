@@ -1,3 +1,5 @@
+'use strict';
+
 var Analytics = require('analytics.js-core').constructor;
 var integration = require('analytics.js-integration');
 var tester = require('analytics.js-integration-tester');
@@ -105,15 +107,23 @@ describe('Elevio', function() {
         analytics.assert(window._elev.user.plan[0] === 'gold');
       });
 
-      it('should send their traits', function() {
+      it('should send traits when custrom keys are provided', function() {
         analytics.identify('id', { locale: 'en_US' });
         analytics.assert(window._elev.user.traits instanceof Object);
+        analytics.assert(window._elev.user.traits.hasOwnProperty('locale'));
         analytics.assert(window._elev.user.traits.locale === 'en_US');
       });
 
-      it('should not send traits', function() {
+      it('should not send traits when no trait information is present', function() {
         analytics.identify('id', { firstName: 'Test', lastName: 'Person', email: 'test@email.com' });
         analytics.assert(!(window._elev.user.traits instanceof Object));
+      });
+
+      it('should remove reserved keys from the trait if without removing unreserved keys', function() {
+        analytics.identify('id', { firstName: 'Test', locale: 'en_US' });
+        analytics.assert(window._elev.user.traits instanceof Object);
+        analytics.assert(!window._elev.user.traits.hasOwnProperty('firstName'));
+        analytics.assert(window._elev.user.traits.locale === 'en_US');
       });
     });
   });

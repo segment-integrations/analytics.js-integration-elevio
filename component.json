@@ -2,7 +2,7 @@
   "name": "analytics.js-integration-elevio",
   "repo": "segment-integrations/analytics.js-integration-elevio",
   "description": "The Elevio analytics.js integration.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
@@ -10,7 +10,7 @@
     "timoxley/next-tick": "0.0.2"
   },
   "development": {
-    "segmentio/analytics.js": "*",
+    "segmentio/analytics.js-core": "^2.10.0",
     "segmentio/analytics.js-integration-tester": "1.4.x",
     "segmentio/clear-env": "0.2.x"
   }

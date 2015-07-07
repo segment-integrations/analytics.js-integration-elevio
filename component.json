@@ -7,7 +7,10 @@
   "main": "lib/index.js",
   "dependencies": {
     "segmentio/analytics.js-integration": "^1.0.0",
-    "timoxley/next-tick": "0.0.2"
+    "timoxley/next-tick": "0.0.2",
+    "segmentio/obj-case": "~0.2.1",
+    "ndhoule/each": "^1.0.3",
+    "ndhoule/keys": "^1.1.1"
   },
   "development": {
     "segmentio/analytics.js-core": "^2.10.0",

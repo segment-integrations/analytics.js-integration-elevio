@@ -1,3 +1,8 @@
+2.1.0 / 2017-03-22
+==================
+
+ * Added user.plan information from segment as user.groups for elevio usage (to be used for article access control)
+
 2.0.0 / 2016-06-21
 ==================
 

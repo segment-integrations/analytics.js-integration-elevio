@@ -100,10 +100,11 @@ describe('Elevio', function() {
         analytics.assert(window._elev.user.name === 'Test Person');
       });
 
-      it('should send their plan', function() {
+      it('should send their plan as plan and group', function() {
         analytics.identify('id', { plan: 'gold' });
         analytics.assert(window._elev.user.plan instanceof Array);
         analytics.assert(window._elev.user.plan[0] === 'gold');
+        analytics.assert(window._elev.user.groups[0] === 'gold');
       });
 
       it('should send traits when custrom keys are provided', function() {

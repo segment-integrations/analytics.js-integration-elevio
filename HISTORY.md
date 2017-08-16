@@ -1,3 +1,8 @@
+2.2.0 / 2017-08-17
+==================
+
+ * Added better support for comapnies using elevio V4 and logging users into the embeddable via the new setUser method
+
 2.1.0 / 2017-03-22
 ==================
 

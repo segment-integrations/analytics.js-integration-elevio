@@ -1,4 +1,5 @@
 2.2.1 / 2017-08-23
+==================
 
  * Reversal of setUser function check logic
 

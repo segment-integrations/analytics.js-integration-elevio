@@ -30,7 +30,6 @@ describe('Elevio', function() {
 
   it('should have the right settings', function() {
     analytics.compare(Elevio, integration('Elevio')
-      .assumesPageview()
       .global('_elev')
       .option('accountId', ''));
   });

@@ -30,7 +30,6 @@ describe('Elevio', function() {
 
   it('should have the right settings', function() {
     analytics.compare(Elevio, integration('Elevio')
-      .assumesPageview()
       .global('_elev')
       .option('accountId', ''));
   });
@@ -43,12 +42,10 @@ describe('Elevio', function() {
     describe('#initialize', function() {
       it('should create window._elev', function() {
         analytics.initialize();
-        analytics.page();
         analytics.assert(window._elev instanceof Object);
       });
       it('should call #load', function() {
         analytics.initialize();
-        analytics.page();
         analytics.called(elevio.load);
       });
     });

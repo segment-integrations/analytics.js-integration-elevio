@@ -64,17 +64,16 @@ describe('Elevio', function() {
       analytics.page();
     });
 
-    describe('#identify', function () {
-
-      describe('#versionAgnostic', function () {
-        beforeEach(function () {
+    describe('#identify', function() {
+      describe('#versionAgnostic', function() {
+        beforeEach(function() {
           // TODO: stub the integration global api.
           // For example:
           // analytics.stub(window.api, 'identify');
           // analytics.stub(window._elev, 'on');
         });
 
-        it('should send an email address', function () {
+        it('should send an email address', function() {
           analytics.identify('id', { email: 'name@example.com' });
           analytics.assert(window._elev.user.email === 'name@example.com');
         });
@@ -85,60 +84,60 @@ describe('Elevio', function() {
         // analytics.assert(window._elev.user.name === 'Test');
         // });
 
-        it('should send a full name', function () {
+        it('should send a full name', function() {
           analytics.identify('id', { name: 'Test Person' });
           analytics.assert(window._elev.user.name === 'Test Person');
         });
 
-        it('should send first and last name if name has space in it', function () {
+        it('should send first and last name if name has space in it', function() {
           analytics.identify('id', { name: 'Test Person' });
           analytics.assert(window._elev.user.first_name === 'Test');
           analytics.assert(window._elev.user.last_name === 'Person');
         });
 
-        it('should send first and last name if firstName and lastName set', function () {
+        it('should send first and last name if firstName and lastName set', function() {
           analytics.identify('id', { firstName: 'Test', lastName: 'Person' });
           analytics.assert(window._elev.user.first_name === 'Test');
           analytics.assert(window._elev.user.last_name === 'Person');
         });
 
-        it('should send a combined name', function () {
+        it('should send a combined name', function() {
           analytics.identify('id', { firstName: 'Test', lastName: 'Person' });
           analytics.assert(window._elev.user.name === 'Test Person');
         });
 
-        it('should not send name if none set', function () {
+        it('should not send name if none set', function() {
           analytics.identify('id');
           analytics.assert(window._elev.user.name === undefined);
         });
 
-        it('should send their plan as plan and group', function () {
+        it('should send their plan as plan and group', function() {
           analytics.identify('id', { plan: 'gold' });
           analytics.assert(window._elev.user.plan instanceof Array);
           analytics.assert(window._elev.user.plan[0] === 'gold');
           analytics.assert(window._elev.user.groups[0] === 'gold');
         });
 
-        it('should send traits when custrom keys are provided', function () {
+        it('should send traits when custrom keys are provided', function() {
           analytics.identify('id', { locale: 'en_US' });
           analytics.assert(window._elev.user.traits instanceof Object);
           analytics.assert(window._elev.user.traits.hasOwnProperty('locale'));
           analytics.assert(window._elev.user.traits.locale === 'en_US');
         });
 
-        it('should not send traits when no trait information is present', function () {
+        it('should not send traits when no trait information is present', function() {
           analytics.identify('id', { firstName: 'Test', lastName: 'Person', email: 'test@email.com' });
           analytics.assert(!(window._elev.user.traits instanceof Object));
         });
 
-        it('should remove reserved keys from the trait if without removing unreserved keys', function () {
+        it('should remove reserved keys from the trait if without removing unreserved keys', function() {
           analytics.identify('id', { firstName: 'Test', locale: 'en_US' });
           analytics.assert(window._elev.user.traits instanceof Object);
           analytics.assert(!window._elev.user.traits.hasOwnProperty('firstName'));
           analytics.assert(window._elev.user.traits.locale === 'en_US');
         });
 
-        it('should send user_hash if present', function () {
+        it('should send user_hash if present', function() {
           analytics.identify('id', {}, {
             Elevio: { user_hash: 'abc' }
           });

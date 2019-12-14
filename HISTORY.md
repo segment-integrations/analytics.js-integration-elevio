@@ -1,3 +1,8 @@
+2.4.0 / 2018-07-07
+==================
+
+ * Added support for sending first and last names
+
 2.3.0 / 2017-08-23
 ==================
 
